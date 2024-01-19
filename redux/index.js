@@ -1,3 +1,6 @@
+const redux = require('redux')
+const createStore = redux.createStore
+
 // Action in Redux 
 /*
  Action:
@@ -35,3 +38,24 @@ const reducer = (state = inititalState, action) => {
             return state
     }
 }
+
+// Redux Stoe
+
+// 1. Responsible for holding app state
+// 2. Allows access to state via `getState()`
+// 3. Allows state to be updated via `dispatch(action)`
+// 4. Registers listeners via `subscribe(listener)`
+
+// Accepts parameter (reducer function)
+const store = createStore(reducer)
+console.log("Initial State: ", store.getState())
+
+// Allow app to subscribe the changes in app using subscribe method
+const unSubscribe = store.subscribe(() => console.log("Updated State: ", store.getState()))
+
+// To update state use dispatch method
+store.dispatch(orderCake())
+store.dispatch(orderCake())
+
+// 
+unSubscribe();
