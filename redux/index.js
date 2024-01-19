@@ -1,5 +1,6 @@
 const redux = require('redux')
 const createStore = redux.createStore
+const bindActionCreators = redux.bindActionCreators;
 
 // Action in Redux 
 /*
@@ -19,7 +20,7 @@ function orderCake() {
     }
 }
 
-function restockCake(qty = 3) {
+function restockCake(qty = 1) {
     return {
         type: cakeRestocked,
         payload: qty
@@ -67,10 +68,22 @@ console.log("Initial State: ", store.getState())
 const unSubscribe = store.subscribe(() => console.log("Updated State: ", store.getState()))
 
 // To update state use dispatch method
-store.dispatch(orderCake())
-store.dispatch(orderCake())
+// store.dispatch(orderCake())
+// store.dispatch(orderCake())
 
-store.dispatch(restockCake())
+// store.dispatch(restockCake(4))
+
+// Bind Action Creators
+
+// Can also use bindActionCreators as an alternative to displatch an action
+// Normally you should just call dispatch directly on your Store instance. If you use Redux with React, react-redux will provide you with the dispatch function so you can call it directly, too.
+// The only use case for bindActionCreators is when you want to pass some action creators down to a component that isn't aware of Redux, and you don't want to pass dispatch or the Redux store to it.
+
+const actions = bindActionCreators({ orderCake, restockCake }, store.dispatch)
+actions.orderCake();
+actions.orderCake();
+
+actions.restockCake(4);
 
 // 
 unSubscribe();
