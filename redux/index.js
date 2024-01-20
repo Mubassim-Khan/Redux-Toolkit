@@ -62,6 +62,7 @@ const icecreamState = {
     totalAmount: 10
 }
 
+// Seperate/Multiple reducers
 const cakeReducer = (state = cakeState, action) => {
     switch (action.type) {
         case cakeOrdered:
@@ -107,7 +108,7 @@ const icecreamReducer = (state = icecreamState, action) => {
 // 3. Allows state to be updated via `dispatch(action)`
 // 4. Registers listeners via `subscribe(listener)`
 
-// Using combineReducers which is used to combine more than 1 reducer into one object reducer, which is wrapped in an object.
+// Using combineReducers which is used to combine more than 1 reducer into one object reducer, which is wrapped in an object, to pass through store.
 const reducers = combineReducers({
     cake: cakeReducer,
     icecream: icecreamReducer
