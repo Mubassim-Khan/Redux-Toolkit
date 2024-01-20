@@ -2,6 +2,12 @@ const redux = require('redux')
 const createStore = redux.createStore
 const bindActionCreators = redux.bindActionCreators;
 const combineReducers = redux.combineReducers;
+const applyMiddleware = redux.applyMiddleware
+
+// 'redux-logger' logs all the information related to redux
+const reduxLogger = require('redux-logger');
+// 'logger' is a Middleware, which uses createLogger() method
+const logger = reduxLogger.createLogger();
 
 // Action in Redux 
 /*
@@ -115,11 +121,12 @@ const reducers = combineReducers({
 })
 
 // Accepts parameter (reducer function)
-const store = createStore(reducers)
+// Also passed the Middleware (logger) using applyMiddleware method.
+const store = createStore(reducers, applyMiddleware(logger))
 console.log("Initial State: ", store.getState())
 
-// Allow app to subscribe the changes in app using subscribe method
-const unSubscribe = store.subscribe(() => console.log("Updated State: ", store.getState()))
+// Allow app to subscribe the changes in app using subscribe method (Removed the console.log as 'logger' middleware will take care of logging.)
+const unSubscribe = store.subscribe(() => {})
 
 // To update state use dispatch method
 // store.dispatch(orderCake())
