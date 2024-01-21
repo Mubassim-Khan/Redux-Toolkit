@@ -1,26 +1,30 @@
 const store = require('./app/store')
 const cakeActions = require('./features/cake/cakeSlice').cakeActions
 const icecreamActions = require('./features/icecream/icecreamSlice').icecreamActions
+const fetchUsers = require('./features/user/userSlice').fetchUsers
 
 // Inspect state using ".getState()" method.
 console.log("Initial State: ", store.getState())
 
 // Listen the changes using ".subscirbe()" method.
 // Removed console.log as logger middleware will do it itself.
-const unSubscribe = store.subscribe(() => {})
+const unSubscribe = store.subscribe(() => { })
 
 // Dispatch action on store using 'store.dispatch()'
-// For Cakes
-store.dispatch(cakeActions.ordered())
-store.dispatch(cakeActions.ordered())
-store.dispatch(cakeActions.ordered())
+// For Users
+store.dispatch(fetchUsers())
 
-store.dispatch(cakeActions.restocked(3))
+// // For Cakes
+// store.dispatch(cakeActions.ordered())
+// store.dispatch(cakeActions.ordered())
+// store.dispatch(cakeActions.ordered())
 
-// For Icecreams
-store.dispatch(icecreamActions.ordered())
-store.dispatch(icecreamActions.ordered())
+// store.dispatch(cakeActions.restocked(3))
 
-store.dispatch(icecreamActions.restocked(2))
+// // For Icecreams
+// store.dispatch(icecreamActions.ordered())
+// store.dispatch(icecreamActions.ordered())
 
-unSubscribe()
+// store.dispatch(icecreamActions.restocked(2))
+
+// unSubscribe()
