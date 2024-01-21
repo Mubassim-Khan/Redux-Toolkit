@@ -6,10 +6,8 @@ const icecreamActions = require('./features/icecream/icecreamSlice').icecreamAct
 console.log("Initial State: ", store.getState())
 
 // Listen the changes using ".subscirbe()" method.
-const unSubscribe = store.subscribe(() => {
-    // Inspect state using ".getState()" method.
-    console.log("Updated State: ", store.getState())
-})
+// Removed console.log as logger middleware will do it itself.
+const unSubscribe = store.subscribe(() => {})
 
 // Dispatch action on store using 'store.dispatch()'
 // For Cakes
