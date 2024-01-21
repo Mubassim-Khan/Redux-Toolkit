@@ -32,11 +32,13 @@ const icecreamSlice = createSlice({
         We use extraReducers as a function which recieves arrgument 'builder'
         Within function body we use "builder" to add a case (addCase). The first arrgument is action type, and then state & payload which are typical reducer type of functio, to mutate the state. 
     */
-    extraReducers: (builder) => {
-        builder.addCase(cakeOrdered, state => {
-            state.numOfIcecreams--
-        })
-    }
+    // Commenting out this functionality for now 
+
+    // extraReducers: (builder) => {
+    //   builder.addCase(cakeOrdered, (state) => {
+    //     state.numOfIcecreams--;
+    //   });
+    // },
 })
 
 export default icecreamSlice.reducer;
