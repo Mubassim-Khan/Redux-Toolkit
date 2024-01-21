@@ -1,9 +1,14 @@
 import './App.css';
+import { CakeView } from './components/cakeView';
+import { IcecreamView } from './components/icecreamView';
+import { UserView } from './components/userView';
 
 function App() {
   return (
     <>
-      <h1>Redux Toolkit</h1>
+      <CakeView />
+      <IcecreamView />
+      <UserView />
     </>
   );
 }
