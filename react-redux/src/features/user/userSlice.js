@@ -9,7 +9,7 @@ const initialState = {
 }
 
 // Generates pending, fulfilled & rejected action types.
-// createAsyncThunk accepts action type as 1st arrgument, and a callback function as 2nd arrgument 
+// createAsyncThunk accepts action type as 1st arrgument, and a async callback function as 2nd arrgument 
 // Callback function, contain async logic and returns promise
 // createAsyncThunk will dispatch promise lifecycle, that we can listen using extraReducers
 // The lifecycle includes, pending, rejected and fulfilled.
@@ -18,7 +18,7 @@ const initialState = {
 export const fetchUsers = createAsyncThunk('user/fetchUsers', () => {
     return axios
         .get('https://jsonplaceholder.typicode.com/users')
-        .then((response) => response.data.map((user) => user.id))
+        .then((response) => response.data)
 })
 
 const userSlice = createSlice({
