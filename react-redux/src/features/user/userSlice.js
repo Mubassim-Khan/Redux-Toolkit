@@ -1,6 +1,6 @@
 // To make use of asyncFunctions we use async thunk functions.
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { axios } from 'axios'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const initialState = {
     loading: true,
@@ -29,16 +29,16 @@ const userSlice = createSlice({
             state.loading = true
         })
         builder.addCase(fetchUsers.fulfilled, (state, action) => {
-            state.loading = false,
-                state.users = action.payload,
-                state.error = ""
+            state.loading = false
+            state.users = action.payload
+            state.error = ""
         })
         builder.addCase(fetchUsers.rejected, (state, action) => {
-            state.loading = false,
-                state.users = [],
-                state.error = action.error.message
+            state.loading = false
+            state.users = []
+            state.error = action.error.message
         })
-    }
+    },
 })
 
 export default userSlice.reducer
